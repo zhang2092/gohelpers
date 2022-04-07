@@ -1,6 +1,7 @@
 package conver
 
 import (
+	"encoding/json"
 	"fmt"
 	"strconv"
 	"strings"
@@ -66,4 +67,24 @@ func StringToSliceInt(num string) []int64 {
 	}
 
 	return result
+}
+
+func MapToJson(param map[string]interface{}) string {
+	dataType, err := json.Marshal(param)
+	if err != nil {
+		return ""
+	}
+
+	dataString := string(dataType)
+	return dataString
+}
+
+func MapSliceStringToJson(param map[string][]string) string {
+	dataType, err := json.Marshal(param)
+	if err != nil {
+		return ""
+	}
+
+	dataString := string(dataType)
+	return dataString
 }
