@@ -1,4 +1,4 @@
-package util
+package logger
 
 import (
 	"github.com/natefinch/lumberjack"
@@ -6,12 +6,12 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
-func NewLogger() *zap.SugaredLogger {
-	writeSyncer := getLogWriter()
-	encoder := getEncoder()
-	core := zapcore.NewCore(encoder, writeSyncer, zapcore.DebugLevel)
+var Logger *zap.SugaredLogger
+
+func NewLogger() {
+	core := zapcore.NewCore(getEncoder(), getLogWriter(), zapcore.DebugLevel)
 	logger := zap.New(core, zap.AddCaller())
-	return logger.Sugar()
+	Logger = logger.Sugar()
 }
 
 func getEncoder() zapcore.Encoder {

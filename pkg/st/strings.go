@@ -1,8 +1,7 @@
-package util
+package st
 
 import (
 	"regexp"
-	"strconv"
 	"strings"
 )
 
@@ -48,12 +47,8 @@ func RemoveHTML(str string) string {
 		str = strings.ReplaceAll(str, "\n", "")
 		str = strings.ReplaceAll(str, " ", "")
 		str = strings.ReplaceAll(str, "　", "")
-		
+
 		return str
 	}
 	return ""
-}
-
-func FloatToString(val float64) string {
-	return strconv.FormatFloat(val, 'f', 1, 64)
 }

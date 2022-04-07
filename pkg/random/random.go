@@ -1,12 +1,9 @@
-package util
+package random
 
 import (
-	"fmt"
 	"math/rand"
 	"strings"
 	"time"
-
-	gonanoid "github.com/matoous/go-nanoid"
 )
 
 const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -29,23 +26,10 @@ func RandomString(n int) string {
 
 func RandomInt(n int) string {
 	var letters = []byte("0123456789")
+	l := len(letters)
 	result := make([]byte, n)
 	for i := range result {
-		result[i] = letters[rand.Intn(len(letters))]
+		result[i] = letters[rand.Intn(l)]
 	}
 	return string(result)
-}
-
-func RandomLevel() string {
-	levels := []string{"DEBUG", "INFO", "ERROR", "WARNING", "FAIL"}
-	n := len(levels)
-	return levels[rand.Intn(n)]
-}
-
-func GenerateFilename() (string, error) {
-	filename, err := gonanoid.Nanoid()
-	if err != nil {
-		return "", fmt.Errorf("could not generate avatar filename: %v", err)
-	}
-	return filename, nil
 }

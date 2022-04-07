@@ -1,4 +1,4 @@
-package util
+package cache
 
 // 简单缓存 适合小数据量
 
@@ -27,7 +27,3 @@ func GetCache(key string) (interface{}, bool) {
 func DeleteCache(key string) {
 	globalMap.Delete(key)
 }
-
-//func LenCache() int {
-//	return int(cacheLen)
-//}

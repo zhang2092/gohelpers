@@ -70,6 +70,6 @@ func PKCS7Padding(ciphertext []byte, blockSize int) []byte {
 // PKCS7UnPadding 去码
 func PKCS7UnPadding(origData []byte) []byte {
 	length := len(origData)
-	unpadding := int(origData[length-1])
-	return origData[:(length - unpadding)]
+	unPadding := int(origData[length-1])
+	return origData[:(length - unPadding)]
 }
