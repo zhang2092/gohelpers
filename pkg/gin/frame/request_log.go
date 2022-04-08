@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lyydhl-zhang/common-module/pkg/logger"
+	"github.com/zhang2092/gohelpers/pkg/logger"
 )
 
 type requestLog struct {

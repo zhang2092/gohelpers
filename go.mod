@@ -1,4 +1,4 @@
-module github.com/lyydhl-zhang/common-module
+module github.com/zhang2092/gohelpers
 
 go 1.17
 

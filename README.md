@@ -1,2 +1,2 @@
-# common-module
+# gohelpers
 basic helper method

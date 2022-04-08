@@ -2,7 +2,7 @@ package ft
 
 import "os"
 
-// 判断所给路径文件/文件夹是否存在
+// Exists 判断所给路径文件/文件夹是否存在
 func Exists(path string) bool {
 	_, err := os.Stat(path) //os.Stat获取文件信息
 	if err != nil {
@@ -14,7 +14,7 @@ func Exists(path string) bool {
 	return true
 }
 
-// 如果不存在则新建文件夹
+// IsNotExistMkDir 如果不存在则新建文件夹
 func IsNotExistMkDir(src string) error {
 	if notExist := Exists(src); !notExist {
 		if err := MkDir(src); err != nil {
@@ -24,7 +24,7 @@ func IsNotExistMkDir(src string) error {
 	return nil
 }
 
-// 新建文件夹
+// MkDir 新建文件夹
 func MkDir(src string) error {
 	err := os.MkdirAll(src, os.ModePerm)
 	if err != nil {
