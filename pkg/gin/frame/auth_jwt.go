@@ -17,6 +17,7 @@ const (
 )
 
 // AuthJWT creates a gin middleware for authorization
+//goland:noinspection GoUnusedExportedFunction
 func AuthJWT(tokenMaker token.Maker) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authorizationHeader := c.GetHeader(authorizationHeaderKey)

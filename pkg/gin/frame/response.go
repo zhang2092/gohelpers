@@ -25,6 +25,14 @@ type response struct {
 //	Value string `json:"error"`
 //}
 
+// PageData 分页数据
+type PageData struct {
+	Total    int         `json:"total"`
+	PageNo   int         `json:"page_no"`
+	PageSize int         `json:"page_size"`
+	Result   interface{} `json:"result"`
+}
+
 // NewResponse return response instance
 func NewResponse() *response {
 	return &response{
