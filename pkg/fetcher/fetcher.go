@@ -34,6 +34,29 @@ func Get(url string) ([]byte, error) {
 	return res, nil
 }
 
+// GetJson application/json get 请求
+func GetJson(url string, parameter []byte, timeout int) ([]byte, error) {
+	client := &http.Client{Timeout: time.Second * time.Duration(timeout)}
+	byteParameter := bytes.NewBuffer(parameter)
+	req, err := http.NewRequest("GET", url, byteParameter)
+	if err != nil {
+		return nil, err
+	}
+
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	res, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	return res, nil
+}
+
 // PostJson application/json post 请求
 func PostJson(url, parameter string, timeout int) ([]byte, error) {
 	client := &http.Client{Timeout: time.Second * time.Duration(timeout)}
