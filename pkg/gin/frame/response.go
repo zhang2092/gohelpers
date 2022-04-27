@@ -28,7 +28,7 @@ type response struct {
 // PageData 分页数据
 type PageData struct {
 	Total    int         `json:"total"`
-	PageNo   int         `json:"page_no"`
+	PageID   int         `json:"page_id"`
 	PageSize int         `json:"page_size"`
 	Result   interface{} `json:"result"`
 }
