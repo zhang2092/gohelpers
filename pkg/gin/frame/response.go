@@ -58,9 +58,18 @@ func (wrapper *wrapper) Json(response *response) {
 	wrapper.ctx.JSON(200, response)
 }
 
-// Success 成功的输出
-func (wrapper *wrapper) Success(message string, data interface{}) {
+// Ok 成功的输出
+func (wrapper *wrapper) Ok(message string, data interface{}) {
 	response := NewResponse()
+	response.Message = message
+	response.Data = data
+	wrapper.Json(response)
+}
+
+// Success 成功的输出
+func (wrapper *wrapper) Success(code int, message string, data interface{}) {
+	response := NewResponse()
+	response.Code = code
 	response.Message = message
 	response.Data = data
 	wrapper.Json(response)
