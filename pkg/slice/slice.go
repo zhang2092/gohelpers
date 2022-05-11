@@ -2,9 +2,10 @@ package slice
 
 import (
 	"math/rand"
-	"strconv"
 	"strings"
 	"time"
+
+	"github.com/zhang2092/gohelpers/pkg/convertor"
 )
 
 // Contains slice中是否包含某个字符串
@@ -53,11 +54,11 @@ func ReverseSlice(a []int) []int {
 	return a
 }
 
-// ConvertSliceToString 将 slice 转换为逗号分隔的字符串
-func ConvertSliceToString(input []int) string {
+// ConvertSliceIntToString 将 slice 转换为逗号分隔的字符串
+func ConvertSliceIntToString[T int | int8 | int16 | int32 | int64](input []T) string {
 	var output []string
 	for _, i := range input {
-		output = append(output, strconv.Itoa(i))
+		output = append(output, convertor.ToString(i))
 	}
 
 	return strings.Join(output, ",")
