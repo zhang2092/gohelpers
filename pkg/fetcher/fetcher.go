@@ -113,11 +113,11 @@ func PostString(url, parameter string, timeout int) ([]byte, error) {
 	if err != nil {
 		return nil, errors.New("读取网络内容失败")
 	}
-	
+
 	return all, nil
 }
 
-func determinEncoding(r *bufio.Reader) encoding.Encoding {
+func determiningEncoding(r *bufio.Reader) encoding.Encoding {
 	bytes, err := r.Peek(1024)
 	if err != nil && err != io.EOF {
 		log.Printf("Fetcher error: %v", err)
