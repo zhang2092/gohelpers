@@ -49,6 +49,7 @@ func (r *Resolver) Discovery(serviceName string) (*RemoteService, error) {
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
+	
 	resp, err := kv.Get(ctx, serviceName, clientV3.WithPrefix())
 	if err != nil {
 		return nil, err

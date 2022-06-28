@@ -36,7 +36,10 @@ func (e *Client) Close() error {
 // Register 注册服务
 func (e *Client) Register(serviceName string, serviceAddress string) error {
 	var err error
-	ctx := context.Background()
+
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*3)
+	defer cancel()
+
 	e.lease, err = e.v3.Grant(ctx, int64(e.interval+1))
 	if err != nil {
 		return err
@@ -54,7 +57,10 @@ func (e *Client) Register(serviceName string, serviceAddress string) error {
 
 // Deregister 注销服务
 func (e *Client) Deregister() error {
-	_, err := e.v3.Delete(context.Background(), e.serviceName)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*3)
+	defer cancel()
+
+	_, err := e.v3.Delete(ctx, e.serviceName)
 	if err != nil {
 		return err
 	}
